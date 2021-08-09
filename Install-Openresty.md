@@ -29,5 +29,22 @@ echo "deb http://openresty.org/package/arm64/ubuntu $(lsb_release -sc) main" \
 
 - Step 4: update the APT index:
 ```
+sudo apt-get update
 sudo apt-get -y install openresty
+```
+
+2. Run Openresty
+```
+# export path
+PATH=/usr/local/openresty/nginx/sbin:$PATH
+export PATH
+
+# look service openresty runing or not
+sudo service --status-all
+
+# if openresty not runing
+sudo service openresty start
+
+# run nginx with config
+nginx -p `pwd`/ -c my_config.conf
 ```
