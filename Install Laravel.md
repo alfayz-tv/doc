@@ -107,3 +107,13 @@ server {
     }
 }
 ```
+>Note:
+>> Agar pas pemberian akses tidak merubah git
+lakukan:
+```
+git config --global core.filemode false
+
+# Remove your local configuration to make the global configuration take effect:
+
+git config --unset core.filemode
+```

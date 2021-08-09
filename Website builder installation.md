@@ -116,6 +116,9 @@ sudo mv composer.phar /usr/local/bin/composer
 # install redis
 sudo apt install redis-server
 
+# run redis
+sudo service redis-server start
+
 # if you want edit config redis
 sudo nano /etc/redis/redis.conf
 
