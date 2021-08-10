@@ -48,3 +48,23 @@ sudo service openresty start
 # run nginx with config
 nginx -p `pwd`/ -c my_config.conf
 ```
+
+3. If failed
+```
+# openresty need 443 and 80 port open
+
+# look port (install first : sudo apt-get install net-tools)
+sudo netstat -lpn |grep :80
+
+# look process id use port 80
+sudo lsof -t -i:80
+
+# kill procces
+sudo kill number_process
+
+```
+
+#note : pastikan path nginx openresty sudah di export dengan:
+```
+echo $PATH
+```
