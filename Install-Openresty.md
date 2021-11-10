@@ -63,6 +63,12 @@ sudo lsof -t -i:80
 sudo kill number_process
 
 ```
+```
+Notes:
+#if can't to run nginx and error lua_ssl you can run with sbin directly
+
+/usr/local/openresty/nginx/sbin/nginx -p `pwd`/ -c your_config.conf
+```
 
 #note : pastikan path nginx openresty sudah di export dengan:
 ```
