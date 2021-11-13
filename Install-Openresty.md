@@ -45,6 +45,7 @@ sudo service --status-all
 # if openresty not runing
 sudo service openresty start
 
+# Openresty not need to run because openresty use port 80 and it will be conflict with nginx
 # run nginx with config
 nginx -p `pwd`/ -c my_config.conf
 ```
@@ -62,6 +63,8 @@ sudo lsof -t -i:80
 # kill procces
 sudo kill number_process
 
+# if error with lua can't to read you can run nginx with sbin 
+/usr/local/openresty/nginx/sbin/nginx -p `pwd`/ -c config.conf
 ```
 ```
 Notes:
