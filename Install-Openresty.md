@@ -74,3 +74,11 @@ Notes:
 ```
 echo $PATH
 ```
+
+```
+Notes:
+- Jika Ada error ssl failed to get ocsp response: failed to validate OCSP response
+    -> https://github.com/auto-ssl/lua-resty-auto-ssl/issues/168
+    -> untuk fix nya hapus ssl yg sudah expire ada folder /etc/resty-auto-ssl/storage/file
+    -> kemudian restart configuration
+```
