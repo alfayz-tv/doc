@@ -1,4 +1,5 @@
-#security header
+# security header
+```
 #1. HTTP Strict Transport Security (HSTS)
 add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
 
@@ -19,3 +20,5 @@ add_header Referrer-Policy "strict-origin";
 
 #7. Permissions-Policy
 add_header Permissions-Policy "geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()";
+
+```
