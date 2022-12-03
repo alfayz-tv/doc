@@ -506,3 +506,90 @@ sudo systemctl status powerdns-admin.service powerdns-admin.socket
 > The services show as running without any errors.
 
 ![image check service](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_systemctl.png)
+
+
+## Step G: Install and Configure Nginx
+> To configure PowerDNS Admin to run on Nginx, do the following:
+
+### 1. Install Nginx with:
+```sh
+sudo apt install nginx -y
+```
+
+### 2. Edit the Nginx configuration file:
+```sh
+sudo nano /etc/nginx/conf.d/pdns-admin.conf
+```
+
+
+### 3. Add the following information:
+```sh
+server {
+  listen *:80;
+  server_name               localhost;
+
+  index                     index.html index.htm index.php;
+  root                      /opt/web/powerdns-admin;
+  access_log                /var/log/nginx/powerdns-admin.local.access.log combined;
+  error_log                 /var/log/nginx/powerdns-admin.local.error.log;
+
+  client_max_body_size              10m;
+  client_body_buffer_size           128k;
+  proxy_redirect                    off;
+  proxy_connect_timeout             90;
+  proxy_send_timeout                90;
+  proxy_read_timeout                90;
+  proxy_buffers                     32 4k;
+  proxy_buffer_size                 8k;
+  proxy_set_header                  Host $host;
+  proxy_set_header                  X-Real-IP $remote_addr;
+  proxy_set_header                  X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_headers_hash_bucket_size    64;
+
+  location ~ ^/static/  {
+    include  /etc/nginx/mime.types;
+    root /opt/web/powerdns-admin/powerdnsadmin;
+
+    location ~*  \.(jpg|jpeg|png|gif)$ {
+      expires 365d;
+    }
+
+    location ~* ^.+.(css|js)$ {
+      expires 7d;
+    }
+  }
+
+  location / {
+    proxy_pass            http://unix:/run/powerdns-admin/socket;
+    proxy_read_timeout    120;
+    proxy_connect_timeout 120;
+    proxy_redirect        off;
+  }
+
+}
+
+```
+
+> If using a different server name, change localhost to your server address.
+
+### 4. Confirm the file has no syntax errors:
+```sh
+nginx -t
+```
+
+### 5. Change the ownership of powerdns-admin to www-data:
+```sh
+sudo chown -R www-data:www-data /opt/web/powerdns-admin
+
+```
+
+### 6. Restart the Nginx service:
+```sh
+sudo systemctl restart nginx
+```
+
+### 7. Access the PowerDNS admin page through the browser:
+```sh
+localhost
+```
+> If linking to a different address, use the address provided in the Nginx configuration file.
