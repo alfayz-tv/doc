@@ -593,3 +593,40 @@ sudo systemctl restart nginx
 localhost
 ```
 > If linking to a different address, use the address provided in the Nginx configuration file.
+
+
+
+## Step H: Configure PowerDNS API
+
+>To configure the PowerDNS API, do the following:
+
+### 1. Log into the PowerDNS Admin via the browser. If running for the first time, create a new user first. The first user is automatically the administrator.
+
+### 2. Open the API Keys tab on the left menu.
+PowerDNS Admin page menu API keys
+### 3. Click the Add Key+ button.
+### 4. The Role field defaults to the Administrator user. Add an optional description for the key.
+
+### 5. Click Create Key to generate an API key. 
+### 6. A popup window prints the key. Copy the key and press Confirm to continue.
+### 7. Navigate to the Dashboard page.
+
+### 8. Enter the domain and API key. Save the changes.
+
+
+![image powerdns key](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_key.png)
+
+![image powerdns admin](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_admin.png)
+
+
+### 9. Enable the API in the PowerDNS configuration. Open the configuration file in the terminal:
+```sh
+nano /etc/powerdns/pdns.conf
+```
+
+### 10. Uncomment and change the following lines:
+```sh
+api=yes
+api-key=yoursecretekey
+webserver=yes
+```
