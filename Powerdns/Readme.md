@@ -319,7 +319,10 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 > After installing all the requirements, the PowerDNS Admin requires additional configuration before running.
-
+```sh
+# exit from venv python
+deactivate
+```
 
 ## Step E: Configure and Run PowerDNS Admin
 > To configure and start PowerDNS Admin on a local instance, do the following:
@@ -350,7 +353,14 @@ import urllib.parse
 
 SECRET_KEY = '\x19\xc7\xd8\xa7$\xb6P*\xc6\xb8\xa1E\x90P\x12\x95'
 
+#change
+### DATABASE CONFIG
+SQLA_DB_USER = 'alfa'
 SQLA_DB_PASSWORD = 'YOUR_PASSWORD_HERE'
+SQLA_DB_HOST = '127.0.0.1'
+SQLA_DB_NAME = 'powerdns'
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+
 ```
 > Save and close the file.
 
