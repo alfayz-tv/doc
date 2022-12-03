@@ -2,12 +2,12 @@
 > ## all request must add headers **X-API-Key**
 
 # List Zones
-```http
+```sh
 GET {{url}}/api/v1/servers/localhost/zones
 ```
 
 # Create Domain
-```http
+```sh
 POST {{url}}/api/v1/servers/localhost/zones
 
 # with body
@@ -21,12 +21,12 @@ POST {{url}}/api/v1/servers/localhost/zones
 ```
 
 # Detail Domain
-```http
+```sh
 GET {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 ```
 
 # Add Record
-```http
+```sh
 PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 # with body
@@ -87,14 +87,14 @@ PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 ```
 
 # Delete Domain
-```http
+```sh
 DELETE {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 ```
 
 
 # Add Cname
-```http
+```sh
 PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 # with body
@@ -117,7 +117,7 @@ PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 ```
 
 # Add MX
-```http
+```sh
 PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 # with body
@@ -142,7 +142,7 @@ PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 ```
 
 # Add Txt Record
-```http
+```sh
 PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 # with body
@@ -166,7 +166,7 @@ PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 ```
 
 # Update NS
-```http
+```sh
 PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 # with body
@@ -191,7 +191,7 @@ PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 ```
 
 # Update SOA
-```http
+```sh
 PATCH {{url}}/api/v1/servers/localhost/zones/yourdomain.id.
 
 # with body
