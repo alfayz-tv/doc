@@ -173,3 +173,63 @@ echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
 apt-get install pdns-server pdns-backend-mysql -y
 
 ```
+
+## Step C: Configure PowerDNS
+> Configure the local PowerDNS file to connect to the database:
+### 1. Open the configuration file for editing:
+```
+nano /etc/powerdns/pdns.d/pdns.local.gmysql.conf
+```
+
+### 2. Add the following information to the file:
+```sh
+# MySQL Configuration
+#
+# Launch gmysql backend
+launch+=gmysql
+
+# gmysql parameters
+gmysql-host=127.0.0.1
+gmysql-port=3306
+gmysql-dbname=pda
+gmysql-user=pda
+gmysql-password=YOUR_PASSWORD_HERE
+gmysql-dnssec=yes
+# gmysql-socket=
+
+```
+> Notes: Exchange the database name, user, and password with the correct parameters if using different ones. Save and close the file.
+
+
+### 3. Change the file permissions:
+```sh
+chmod 777 /etc/powerdns/pdns.d/pdns.local.gmysql.conf
+```
+
+### 4. Stop the pdns service:
+```sh
+systemctl stop pdns
+
+```
+
+### 5. Test the connection to the database:
+```sh
+pdns_server --daemon=no --guardian=no --loglevel=9
+```
+
+![image check connection to mysql](https://github.com/alfayz-tv/doc/blob/master/images/powerdns.png)
+
+> The output shows a successful connection. Press CTRL+C to exit the test.
+
+### 6. Start the service:
+```sh
+systemctl start pdns
+```
+
+### 7. Check the connection with the ss command:
+```sh
+ss -alnp4 | grep pdns
+```
+> Verify the TCP/UDP port 53 is open and in LISTEN/UCONN state.
+
+![image check powerdns port](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_service.png)
