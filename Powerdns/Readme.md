@@ -233,3 +233,88 @@ ss -alnp4 | grep pdns
 > Verify the TCP/UDP port 53 is open and in LISTEN/UCONN state.
 
 ![image check powerdns port](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_service.png)
+
+
+## Step D: Install PowerDNS Admin Dependencies
+> The PowerDNS Admin helps manage PowerDNS through a web interface. To install the dashboard locally, do the following:
+
+### 1. Install the Python development package:
+```sh
+apt install python3-dev
+
+```
+
+### 2. Install dependencies:
+```sh
+apt install -y git libmysqlclient-dev libsasl2-dev libldap2-dev libssl-dev libxml2-dev libxslt1-dev libxmlsec1-dev libffi-dev pkg-config apt-transport-https python3-venv build-essential curl
+
+```
+
+### 3. Fetch the Node.js setup:
+```sh
+curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+```
+
+
+### 4. Install Node.js with:
+```sh
+apt install -y nodejs
+```
+
+
+### 5. Next, install the Yarn package manager. Fetch the Yarn public key and add it to apt:
+> Yarn helps build the asset files.
+```sh
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+```
+
+### 6. Add Yarn to the list of sources:
+```sh
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+```
+
+### 7. Update the apt sources list:
+```sh
+apt update -y
+```
+
+### 8. Install Yarn with:
+```sh
+apt install yarn -y
+```
+
+
+### 9. Clone the PowerDNS Admin Git repository to /opt/web/powerdns-admin:
+```sh
+git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/web/powerdns-admin
+
+```
+> If using a different directory, exchange the destination directory in the command and in all subsequent appearances.
+
+
+### 10. Navigate to the cloned Git directory:
+```sh
+cd /opt/web/powerdns-admin
+```
+
+### 11. Create a Python virtual environment:
+```sh
+python3 -mvenv ./venv
+```
+
+### 12. Activate the virtual environment with:
+```sh
+source ./venv/bin/activate
+```
+
+### 13. Upgrade pip to the latest version:
+> The pip package manager helps install additional Python requirements.
+```sh
+pip install --upgrade pip
+```
+
+### 14. Install the requirements from the requirements.txt file:
+```sh
+pip install -r requirements.txt
+```
