@@ -318,3 +318,179 @@ pip install --upgrade pip
 ```sh
 pip install -r requirements.txt
 ```
+> After installing all the requirements, the PowerDNS Admin requires additional configuration before running.
+
+
+## Step E: Configure and Run PowerDNS Admin
+> To configure and start PowerDNS Admin on a local instance, do the following:
+
+### 1. Use the cp command to copy the example development.py Python file to production.py:
+
+```sh
+cp /opt/web/powerdns-admin/configs/development.py /opt/web/powerdns-admin/configs/production.py
+```
+
+### 2. Open the production.py file for editing:
+```sh
+nano /opt/web/powerdns-admin/configs/production.py
+```
+
+### 3. Edit the following lines:
+```sh
+#import urllib.parse
+
+SECRET_KEY = 'e951e5a1f4b94151b360f47edf596dd2'
+
+SQLA_DB_PASSWORD = 'changeme'
+```
+
+### 4. Uncomment the library import, provide a randomly generated secret key, and provide the correct database password.
+```sh
+import urllib.parse
+
+SECRET_KEY = '\x19\xc7\xd8\xa7$\xb6P*\xc6\xb8\xa1E\x90P\x12\x95'
+
+SQLA_DB_PASSWORD = 'YOUR_PASSWORD_HERE'
+```
+> Save and close the file.
+
+### 5. Export the production app configuration variable:
+```sh
+export FLASK_CONF=../configs/production.py
+```
+
+### 6. Export the flask application variable:
+```sh
+export FLASK_APP=powerdnsadmin/__init__.py
+```
+
+### 7. Upgrade the database schema:
+```sh
+flask db upgrade
+
+```
+
+### 8. Install project dependencies:
+```sh
+yarn install --pure-lockfile
+
+```
+
+### 9. Build flask app assets:
+```
+flask assets build
+```
+> Wait for the build to complete.
+
+### 10. Run the application with:
+```sh
+./run.py
+
+```
+> Leave the application running.
+
+### 11. The application currently runs on localhost on port 9191. Visit the following address:
+```sh
+# go to browser and access below
+http://localhost:9191
+```
+> The login screen for PowerDNS Admin shows. Currently, there are no users, and the first user you register shall be the administrator account.
+
+### 12. In the terminal, exit the virtual environment and log out of the root user with:
+```sh
+exit
+```
+> The terminal returns to a regular state.
+
+
+## Step F: Create PowerDNS Admin Service
+> Configure PowerDNS Admin to run on startup:
+
+### 1. Create a systemd service file for PowerDNS Admin:
+```sh
+sudo nano /etc/systemd/system/powerdns-admin.service
+```
+
+### 2. Add the following contents:
+```sh
+[Unit]
+Description=PowerDNS-Admin
+Requires=powerdns-admin.socket
+After=network.target
+[Service]
+User=root
+Group=root
+PIDFile=/run/powerdns-admin/pid
+WorkingDirectory=/opt/web/powerdns-admin
+ExecStartPre=/bin/bash -c '$$(mkdir -p /run/powerdns-admin/)'
+ExecStart=/opt/web/powerdns-admin/venv/bin/gunicorn --pid /run/powerdns-admin/pid --bind unix:/run/powerdns-admin/socket 'powerdnsadmin:create_app()'
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
+
+```
+
+### 3. Create a unit file:
+```sh
+sudo systemctl edit --force powerdns-admin.service
+```
+
+### 4. Append the following:
+```sh
+
+[Service]
+Environment="FLASK_CONF=../configs/production.py"
+```
+
+### 5. Create a socket file:
+```sh
+sudo nano /etc/systemd/system/powerdns-admin.socket
+```
+
+### 6. Insert the following information:
+```sh
+[Unit]
+Description=PowerDNS-Admin socket
+
+[Socket]
+ListenStream=/run/powerdns-admin/socket
+
+[Install]
+WantedBy=sockets.target
+```
+
+### 7. Create an environment file:
+```sh
+sudo nano /etc/tmpfiles.d/powerdns-admin.conf
+```
+
+### 8. Add the following information:
+```sh
+d /run/powerdns-admin 0755 pdns pdns -
+```
+
+
+### 9. Reload the daemon:
+```sh
+sudo systemctl daemon-reload
+```
+
+
+### 10. Start and enable the service and socket:
+```sh
+sudo systemctl start powerdns-admin.service powerdns-admin.socket
+```
+
+```sh
+sudo systemctl enable powerdns-admin.service powerdns-admin.socket
+
+```
+
+### 11. Check the status with:
+```sh
+sudo systemctl status powerdns-admin.service powerdns-admin.socket
+
+```
+> The services show as running without any errors.
