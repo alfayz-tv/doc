@@ -505,4 +505,4 @@ sudo systemctl status powerdns-admin.service powerdns-admin.socket
 ```
 > The services show as running without any errors.
 
-![image check powerdns port](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_systemctl.png)
+![image check service](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_systemctl.png)
