@@ -319,10 +319,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 > After installing all the requirements, the PowerDNS Admin requires additional configuration before running.
-```sh
-# exit from venv python
-deactivate
-```
+
 
 ## Step E: Configure and Run PowerDNS Admin
 > To configure and start PowerDNS Admin on a local instance, do the following:
@@ -409,9 +406,12 @@ http://localhost:9191
 ### 12. In the terminal, exit the virtual environment and log out of the root user with:
 ```sh
 exit
+
+#or 
+# exit from venv python
+deactivate
 ```
 > The terminal returns to a regular state.
-
 
 ## Step F: Create PowerDNS Admin Service
 > Configure PowerDNS Admin to run on startup:
@@ -504,3 +504,5 @@ sudo systemctl status powerdns-admin.service powerdns-admin.socket
 
 ```
 > The services show as running without any errors.
+
+![image check powerdns port](https://github.com/alfayz-tv/doc/blob/master/images/powerdns_systemctl.png)
