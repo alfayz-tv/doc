@@ -139,3 +139,37 @@ exit;
 ```
 
 ![image mysql powerdns tables](https://github.com/alfayz-tv/doc/blob/master/images/mysql_showtables.png)
+
+
+
+## Step B: Install PowerDNS
+### 1. Switch to the root user:
+```sh
+sudo su -
+```
+
+### 2. Disable the systemd-resolved service with:
+> Layanan yang diselesaikan dengan systemd menyediakan resolusi nama untuk aplikasi lokal. PowerDNS menggunakan layanannya sendiri untuk resolusi nama.
+```sh
+systemctl disable --now systemd-resolved
+```
+
+![image disable systemd resolved](https://github.com/alfayz-tv/doc/blob/master/images/disabled_systemd_resolved.png)
+
+### 3. Delete the system service configuration file with:
+```sh
+# delete default resolver
+rm -rf /etc/resolv.conf
+```
+
+### 4. Create the new resolv.conf file:
+```sh
+# with google nameserver resolver
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+```
+
+### 5. Install the PowerDNS server and database backend packages with:
+```sh
+apt-get install pdns-server pdns-backend-mysql -y
+
+```
