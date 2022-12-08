@@ -7,7 +7,7 @@ sudo apt install nginx
 ```
 sudo apt-get install php7.4 libapache2-mod-php7.4 php7.4-curl php-pear php7.4-gd php7.4-dev php7.4-zip php7.4-mbstring php7.4-mysql php7.4-xml curl -y
 
-sudo apt install php-zip php-common php-fpm php-cli unzip
+sudo apt install php7.4-zip php7.4-common php7.4-fpm php7.4-cli unzip
 ```
 
 3. install composer
