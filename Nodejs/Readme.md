@@ -35,3 +35,85 @@ npm install --global yarn
 # check versi yarn
 yarn -v
 ```
+
+# pm2
+```sh
+# start golang project
+pm2 start ./main --name main
+
+# list process
+pm2 list
+
+# or
+pm2 status
+
+# look logs
+pm2 logs main
+
+#look service / process (main is name of process)
+pm2 desc main 
+
+
+# stop
+pm2 stop main
+
+# or you can stop all process
+pm2 stop all
+
+# delete all service
+pm2 delete all
+```
+
+# Run service with ecosystem pm2
+
+> example file ecosystem.config.js
+```sh
+module.exports = {
+  apps : [
+    {
+      name: "registrar-api",
+      cwd: '/var/www/html/registrar-api',
+      script: "./main",
+      args: "start",
+      exec_interpreter: "none",
+      exec_mode: "fork_mode",
+      log_date_format: "YYYY-MM-DD HH:mm:ss Z",
+      env: {
+        APP_PORT: 3002
+      }
+    },
+    {
+      name: "registrar-admin",
+      cwd: '/var/www/html/register-frontend-next/apps/admin',
+      script: "node_modules/.bin/next",
+      args: "start",
+      exec_interpreter: "none",
+      exec_mode: "fork_mode",
+      log_date_format: "YYYY-MM-DD HH:mm:ss Z",
+      env: {
+        PORT: 3001
+      }
+    },
+    {
+      name: "registrar-user",
+      cwd: '/var/www/html/register-frontend-next/apps/user',
+      script: "node_modules/.bin/next",
+      args: "start",
+      exec_interpreter: "none",
+      exec_mode: "fork_mode",
+      log_date_format: "YYYY-MM-DD HH:mm:ss Z",
+      env: {
+        PORT: 3000
+      }
+    },
+  ]
+}
+
+
+```
+
+```sh
+# and then run with pm2
+pm2 start ecosystem.config.js
+
+```
