@@ -1,11 +1,10 @@
 # Apa ISO 5055
-```
-ISO 5055 adalah standar kualitas perangkat lunak yang menghitung ukuran kualitas berdasarkan jumlah kelemahan kritis dalam perangkat lunak. Secara khusus, ini melihat empat karakteristik kualitas perangkat lunak: keamanan, keandalan, efisiensi kinerja, dan pemeliharaan.
-```
+
+> ISO 5055 adalah standar kualitas perangkat lunak yang menghitung ukuran kualitas berdasarkan jumlah kelemahan kritis dalam perangkat lunak. Secara khusus, ini melihat empat karakteristik kualitas perangkat lunak: keamanan, keandalan, efisiensi kinerja, dan pemeliharaan.
 
 ![image iso](https://github.com/alfayz-tv/doc/blob/master/images/iso.png)
 
-> pada dasarnya pengukuran di lakukan pada level source code, meliputi:
+## pada dasarnya pengukuran di lakukan pada level source code, meliputi:
 
 |  Software Quality Characteristic | Unit Level  |  Technology Level |  System Level |
 |---|---|---|---|
