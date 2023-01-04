@@ -13,6 +13,13 @@
 |           |   Improper locking    |   | SQL injection |
 |           |   Failure to use vetted libraries or frameworks |     | Cross-site scripting|
 |           |   Uncontrolled format string |        | Secure architecture design compliance |
-
-----------------------------------------------------------------------------------------------
-
+|Reliability| Error and Exception handling | Multi-layer design compliance | Exception handling through transactions |
+|           | Complexity of algorithms | Software manages data integrity and consistency | Protecting state in multi-threaded environments |
+|           | Error prone programming |             | Resource bounds management |
+|           | Safe use of inheritance and polymorphism |        | Null pointers dereference detection |
+|           | Managing allocated resources, timeouts |      |   |
+|Efficiency | Expensive computations in loops | Compliance with object-oriented best practices | Appropriate interactions with expensive or remote resources |
+|           | Compliance with garbage collection best practices | Compliance with SQL best practices | Data access performance and data management |
+|           |       | Memory, network, and disk space management | Centralized handling of client requests |
+|           |       |       | Use of middle tier components versus procedures/DB functions |
+|           |       |       | Algorithm complexity |
