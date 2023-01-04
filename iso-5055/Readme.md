@@ -23,3 +23,7 @@
 |           |       | Memory, network, and disk space management | Centralized handling of client requests |
 |           |       |       | Use of middle tier components versus procedures/DB functions |
 |           |       |       | Algorithm complexity |
+|Maintainability | High cyclomatic complexity | Unstructured and duplicated code | Tightly coupled modules |
+|           | Over-parameterization of methods | Controlled level of dynamic coding | Strict hierarchy of calling between architectural layers |
+|           | Hard coding of literals | Compliance with OO best practices | Excessive horizontal layers |
+|           | Excessive component size |        | Encapsulated data access |
