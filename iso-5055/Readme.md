@@ -121,6 +121,7 @@ weakness associated with the Software Quality characteristic
 
 ```
 # 7. List of ASCQM Weaknesses
+> look [List of cisq weakness](https://github.com/alfayz-tv/doc/blob/master/iso-5055/cisq-weaknesses-in-ascqm.pdf "")
 
 # 8. ASCQM Weakness Detection Patterns
 ## 8.1 Specification of Detection Patterns
@@ -142,20 +143,23 @@ ditentukan oleh bahasa pemrograman menjadi KDM.
 
 
 # 9. Calculation of the Quality Measures
-> Setelah meninjau beberapa alternatif, hitungan total pelanggaran aturan kualitas dipilih sebagai yang terbaik
-opsi untuk ukuran dasar untuk masing-masing dari empat karakteristik kualitas perangkat lunak yang tercakup dalam hal ini
-spesifikasi. Ukuran karakteristik kualitas perangkat lunak sering dinilai pada komponen
-tingkat dan kemudian dikumpulkan untuk mengembangkan skor keseluruhan untuk aplikasi. Namun, mencetak gol di
+> Ukuran karakteristik kualitas perangkat lunak sering dinilai pada komponen tingkat dan kemudian dikumpulkan untuk mengembangkan skor keseluruhan untuk aplikasi. Namun, mencetak gol di
 tingkat komponen ditolak karena banyak pelanggaran aturan kualitas tidak dapat diisolasi menjadi satu
 komponen, melainkan melibatkan interaksi di antara beberapa komponen. Oleh karena itu, masing-masing Otomatis
 Skor Ukuran Kualitas Kode Sumber dihitung sebagai jumlah dari elemen ukuran kualitasnya yang dihitung
 di seluruh aplikasi.
 
-```
+
+Perhitungan skor Pengukuran Kualitas Kode Sumber Otomatis berlangsung sebagai berikut:
+- Skor pola deteksi adalah jumlah kejadian,
+- Skor kelemahan adalah skor pola deteksinya,
+- Nilai karakteristik kualitas adalah penjumlahan dari nilai kelemahannya
+
+```js
 Occurrence Count of Weakness x = Σ (Occurrences of ASCQM-y)
 Where x = a CWE weakness (CWE-119, CWE-120, etc.)
 y = a detection pattern for weakness x
-and
+//and
 Occurrence Count of Weakness Category x = Σ (Occurrence Count of ASCQM-y)
 Where x = a software quality characteristic (Reliability, Security, Performance Efficiency,
 Maintainability)
