@@ -94,6 +94,74 @@ look Annex C.
 ## 6.7 Automated Source Code Security Measure Element Descriptions
 
 
+## 6.8 Introduction to the Specification of Quality Measure Elements
+```
+Ukur Elemen dengan konvensi berikut:
+• Elemen struktural yang termasuk dalam pola kelemahan direpresentasikan dalam Knowledge Discovery
+Metamodel (KDM).
+• Hubungan antar elemen struktur yang merupakan pola kelemahan direpresentasikan dalam
+Software Patterns Metamodel Standard (SPMS) untuk menghitung ukuran pada tingkat kelemahan.
+```
+
+## 6.9 Knowledge Discovery Metamodel (KDM)
+```
+
+```
+## 6.10 Software Patterns Metamodel Standard (SPMS)
+```
+
+
+```
+## 6.11 Reading guide
+```
+- Sub-clause 7.x represents the Software Quality characteristic addressed by the associated
+weakness patterns.
+- Sub-clause 7.x.y represents the SPMS modeling associated with a weakness pattern for a specific
+weakness associated with the Software Quality characteristic
+
+```
+# 7. List of ASCQM Weaknesses
+
+# 8. ASCQM Weakness Detection Patterns
+## 8.1 Specification of Detection Patterns
+> Pola deteksi memberikan panduan untuk deteksi otomatis kelemahan yang disebutkan dalam Klausul 7.
+Setiap kelemahan mungkin memiliki beberapa contoh berbeda dalam kode sumber. Dengan demikian, kelemahan mungkin
+terkait dengan beberapa pola deteksi yang berbeda. Setiap pola deteksi dapat dikaitkan dengan
+kelemahan dalam beberapa ukuran kualitas yang berbeda. Ada 135 pola deteksi yang terkait dengan
+kelemahan dalam Pengukuran Kualitas Kode Sumber Otomatis. Jumlah ini akan bertambah karena lebih banyak deteksi
+pola ditemukan dan ditentukan.
+Pola Deteksi menggunakan mikro-KDM untuk memberikan perincian yang lebih besar pada spesifikasi kelemahannya
+pola. Kendala semantik tambahan diperlukan untuk mengoordinasikan produsen dan konsumen KDM
+model untuk menggunakan lapisan Elemen Program KDM untuk aplikasi analisis kontrol dan aliran data, juga
+seperti untuk memberikan lebih banyak presisi untuk Resource Layer dan Abstraction Layer. Mikro-KDM tercapai
+ini dengan membatasi perincian elemen aksi daun dan maknanya dengan menyediakan himpunan
+tindakan mikro dengan semantik yang telah ditentukan. Micro-KDM memperlakukan aksi makro asli sebagai wadah yang
+memiliki tindakan mikro tertentu dengan semantik yang telah ditentukan. Jadi, semantik yang tepat dari tindakan makro adalah
+didefinisikan. Micro-KDM membatasi pola bagaimana memetakan pernyataan sistem yang ada sebagai
+ditentukan oleh bahasa pemrograman menjadi KDM.
+
+
+# 9. Calculation of the Quality Measures
+> Setelah meninjau beberapa alternatif, hitungan total pelanggaran aturan kualitas dipilih sebagai yang terbaik
+opsi untuk ukuran dasar untuk masing-masing dari empat karakteristik kualitas perangkat lunak yang tercakup dalam hal ini
+spesifikasi. Ukuran karakteristik kualitas perangkat lunak sering dinilai pada komponen
+tingkat dan kemudian dikumpulkan untuk mengembangkan skor keseluruhan untuk aplikasi. Namun, mencetak gol di
+tingkat komponen ditolak karena banyak pelanggaran aturan kualitas tidak dapat diisolasi menjadi satu
+komponen, melainkan melibatkan interaksi di antara beberapa komponen. Oleh karena itu, masing-masing Otomatis
+Skor Ukuran Kualitas Kode Sumber dihitung sebagai jumlah dari elemen ukuran kualitasnya yang dihitung
+di seluruh aplikasi.
+
+```
+Occurrence Count of Weakness x = Σ (Occurrences of ASCQM-y)
+Where x = a CWE weakness (CWE-119, CWE-120, etc.)
+y = a detection pattern for weakness x
+and
+Occurrence Count of Weakness Category x = Σ (Occurrence Count of ASCQM-y)
+Where x = a software quality characteristic (Reliability, Security, Performance Efficiency,
+Maintainability)
+y = a detection pattern for quality characteristic x
+
+```
 ![image iso](https://github.com/alfayz-tv/doc/blob/master/images/iso.png)
 
 ## pada dasarnya pengukuran di lakukan pada level source code, meliputi:
