@@ -1,16 +1,7 @@
 # install sonarcube on mac
 
 ```sh
-
-brew install sonar
-brew install sonar-scanner
-
-```
-
-## edit on .zshrc 
-```sh
-export SONAR_HOME=/usr/local/Cellar/sonar-scanner/{version}/libexec 
-export SONAR=$SONAR_HOME/bin export PATH=$SONAR:$PATH
+brew install sonarqube
 
 ```
 
