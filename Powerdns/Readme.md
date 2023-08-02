@@ -320,6 +320,10 @@ pip install -r requirements.txt
 ```
 > After installing all the requirements, the PowerDNS Admin requires additional configuration before running.
 
+> if error pg_config executable not found add this
+```sh
+sudo apt install libpq-dev 
+```
 
 ## Step E: Configure and Run PowerDNS Admin
 > To configure and start PowerDNS Admin on a local instance, do the following:
