@@ -6,7 +6,7 @@
 # Create user with access from other (not localhost)
 ```sh
 #example
-CREATE USER 'new_user'@'%' IDENTIFIED BY 'password1';
+CREATE USER 'new_user'@`%` IDENTIFIED BY 'password1';
 # one db
 GRANT ALL PRIVILEGES ON database_name.* TO 'new_user'@'%';
 # all db
