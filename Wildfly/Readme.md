@@ -26,6 +26,12 @@ ctrl + x
 /jboss-cli.sh --connect command=:reload
 ```
 
+# install with homebrew
+```sh
+
+brew install wildfly-as
+```
+
 # add user in wildfly
 ```sh
 # to dir (on mac os)
@@ -43,4 +49,36 @@ http://localhost:9990
 # username: guest
 # password: guest
 
+```
+
+# add Datasource & drivers
+## example add mariadb-java-client-3.4.1.jar
+
+```sh
+# ex:
+# to directory wildfly
+cd /opt/homebrew/Cellar/wildfly-as/wildfly-26.1.1.Final/bin
+
+# run wildfly
+./standalone.sh
+
+# open new terminal
+cd /opt/homebrew/Cellar/wildfly-as/wildfly-26.1.1.Final/bin
+
+# install jar file
+# go browser https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client/3.1.4
+
+# add to this folder
+
+# run jbos-cli
+./jboss-cli.sh
+
+#connect
+connect
+
+# Firstly, install the JDBC Driver as a Module:
+module add --name=org.mariadb --resources=mariadb-java-client-3.1.4.jar --dependencies=javax.api,javax.transaction.api
+
+# Next, register the Driver in the datasources subsystem:
+/subsystem=datasources/jdbc-driver=mariadb:add(driver-name="mariadb",driver-module-name="org.mariadb",driver-class-name=org.mariadb.jdbc.Driver)
 ```
