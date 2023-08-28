@@ -81,4 +81,7 @@ module add --name=org.mariadb --resources=mariadb-java-client-3.1.4.jar --depend
 
 # Next, register the Driver in the datasources subsystem:
 /subsystem=datasources/jdbc-driver=mariadb:add(driver-name="mariadb",driver-module-name="org.mariadb",driver-class-name=org.mariadb.jdbc.Driver)
+
+# Next, complete the Datasource installation as follows:
+data-source add --jndi-name=java:/PANDICORE --name=PandiCoreDS --connection-url=jdbc:mariadb://localhost:3306/pandi_core --driver-name=mariadb --user-name=alfa --password=password
 ```
