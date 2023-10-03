@@ -117,3 +117,22 @@ module.exports = {
 pm2 start ecosystem.config.js
 
 ```
+
+## update node version with nvm
+```sh
+# example with version node v18.18.0 
+nvm install v18.18.0 
+
+# list node version
+nvm ls-remote
+
+# install node
+nvm install v18.18.0 
+
+# set default node
+nvm alias default X.X.X
+
+# check node
+node -v
+
+```
