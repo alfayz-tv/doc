@@ -136,7 +136,9 @@ module.exports = {
     exec_mode: "fork_mode",
     log_date_format: "YYYY-MM-DD HH:mm:ss Z",
     env: {
-    PORT: 8000
-    }
+        "NODE_ENV": "production",
+        PORT: 8000
+    },
+    "interpreter_args": ["--loader", "ts-node/esm", "--project", "./tsconfig.json"]
 },
 ```
