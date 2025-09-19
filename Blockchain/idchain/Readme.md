@@ -1,4 +1,6 @@
-
+# Install
+- install validator (relaychain) terlebih dahulu sebelum install collator
+- 
 
 # Check Validator Full Sync
 ```sh
